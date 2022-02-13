@@ -63,6 +63,9 @@
                                                 <state key="normal" title="AC">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="clearAll:" destination="ey4-0b-agg" eventType="touchUpInside" id="lbf-cG-fJp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G64-9b-ycy">
                                                 <rect key="frame" x="311.5" y="0.0" width="102.5" height="142.5"/>

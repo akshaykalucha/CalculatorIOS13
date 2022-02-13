@@ -11,6 +11,12 @@ class ViewController: UIViewController {
     func sendText(txt: String) -> String {
         return "kjhdbfjkdhcfbj"
     }
+    
+    
+    @IBAction func clearAll(_ sender: UIButton) {
+        textField.text = "0"
+        firstTouch = true
+    }
     @IBOutlet weak var textField: UILabel!
     var firstTouch = true
     override func viewDidLoad() {
