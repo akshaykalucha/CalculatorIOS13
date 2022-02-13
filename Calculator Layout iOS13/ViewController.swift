@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     var firstTouch = true
     var curr = ""
     var opsDone = false
+    var currOps:String = ""
     let ops = ["/", "*", "+", "-", "%"]
     func sendText(txt: String) -> String {
         return "kjhdbfjkdhcfbj"
@@ -20,8 +21,14 @@ class ViewController: UIViewController {
     func calculate(ops: String, prev: Int, curr: Int) -> String {
         if ops == "+"{
             return String(prev + curr)
+        }else if ops == "*"{
+            return String(prev * curr)
+        }else if ops == "-"{
+            return String(prev - curr)
+        } else if ops == "%" {
+            return String(prev / curr)
         }else{
-            return String(prev + curr)
+            return String(curr)
         }
     }
     
@@ -38,7 +45,9 @@ class ViewController: UIViewController {
     // Button Press
     func changeTField(num: String) {
         if opsDone{
+            curr = textField.text!
             textField.text = ""
+            opsDone = false
         }
         if textField.text!.count < 9 {
             if firstTouch {
@@ -103,19 +112,30 @@ class ViewController: UIViewController {
         print("multiply")
         curr = textField.text!
         opsDone = true
+        currOps = "*"
     }
 
     @IBAction func divisionButton(_ sender: UIButton) {
         print("divide")
+        curr = textField.text!
+        opsDone = true
+        currOps = "%"
     }
     @IBAction func minusBUtton(_ sender: UIButton) {
         print("minus")
+        opsDone = true
+        curr = textField.text!
+        currOps = "-"
     }
     @IBAction func addButton(_ sender: UIButton) {
         print("add")
+        opsDone = true
+        curr = textField.text!
+        currOps = "+"
     }
     @IBAction func equalTo(_ sender: UIButton) {
         print("show result")
+        textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
     }
 }
 
