@@ -110,6 +110,9 @@ class ViewController: UIViewController {
     // Logic Computations
     @IBAction func multiplyButton(_ sender: UIButton) {
         print("multiply")
+        if curr != "" {
+            textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
+        }
         curr = textField.text!
         opsDone = true
         currOps = "*"
@@ -117,18 +120,27 @@ class ViewController: UIViewController {
 
     @IBAction func divisionButton(_ sender: UIButton) {
         print("divide")
+        if curr != "" {
+            textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
+        }
         curr = textField.text!
         opsDone = true
         currOps = "%"
     }
     @IBAction func minusBUtton(_ sender: UIButton) {
         print("minus")
+        if curr != "" {
+            textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
+        }
         opsDone = true
         curr = textField.text!
         currOps = "-"
     }
     @IBAction func addButton(_ sender: UIButton) {
         print("add")
+        if curr != "" {
+            textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
+        }
         opsDone = true
         curr = textField.text!
         currOps = "+"
