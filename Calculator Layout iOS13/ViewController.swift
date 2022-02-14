@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     
     @IBAction func clearAll(_ sender: UIButton) {
         textField.text = "0"
+        curr = ""
+        currOps = ""
         firstTouch = true
     }
     
@@ -60,47 +62,39 @@ class ViewController: UIViewController {
         firstTouch = false
     }
     @IBAction func fourButton(_ sender: UIButton) {
-        print("4 touched")
         changeTField(num: "4")
 
     }
     @IBAction func sevenButton(_ sender: UIButton) {
-        print("7 pressed")
         changeTField(num: "7")
     }
     
     @IBAction func eightButton(_ sender: UIButton) {
-        print("eight pressed")
         changeTField(num: "8")
     }
     @IBAction func nineButton(_ sender: UIButton) {
-        print("nine pressed")
         changeTField(num: "9")
     }
     
     @IBAction func fiveButton(_ sender: UIButton) {
-        print("five pressed")
         changeTField(num: "5")
     }
     @IBAction func sixButton(_ sender: UIButton) {
-        print("six pressed")
         changeTField(num: "6")
     }
     @IBAction func oneButton(_ sender: UIButton) {
-        print("one pressed")
         changeTField(num: "1")
     }
     @IBAction func twoButton(_ sender: UIButton) {
-        print("two pressed")
         changeTField(num: "2")
     }
     @IBAction func threeButton(_ sender: UIButton) {
-        print("three pressed")
         changeTField(num: "3")
     }
     @IBAction func zeroButton(_ sender: UIButton) {
-        print("zero pressed")
-        changeTField(num: "0")
+        if textField.text != "0" {
+            changeTField(num: "0")
+        }
     }
     @IBAction func decimalButton(_ sender: UIButton) {
         print("point pressed")
@@ -109,7 +103,6 @@ class ViewController: UIViewController {
     
     // Logic Computations
     @IBAction func multiplyButton(_ sender: UIButton) {
-        print("multiply")
         if curr != "" {
             textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
         }
@@ -119,7 +112,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func divisionButton(_ sender: UIButton) {
-        print("divide")
         if curr != "" {
             textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
         }
@@ -128,7 +120,9 @@ class ViewController: UIViewController {
         currOps = "%"
     }
     @IBAction func minusBUtton(_ sender: UIButton) {
-        print("minus")
+        if currOps != "" {
+            currOps = "-"
+        }
         if curr != "" {
             textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
         }
@@ -137,7 +131,6 @@ class ViewController: UIViewController {
         currOps = "-"
     }
     @IBAction func addButton(_ sender: UIButton) {
-        print("add")
         if curr != "" {
             textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
         }
@@ -146,8 +139,13 @@ class ViewController: UIViewController {
         currOps = "+"
     }
     @IBAction func equalTo(_ sender: UIButton) {
-        print("show result")
-        textField.text = calculate(ops: currOps, prev: Int(curr)!, curr: Int(textField.text!)!)
+        textField.text = calculate(ops: currOps, prev: Int(textField.text!)!, curr: Int(curr)!)
+        print(currOps, curr, textField.text!)
+    }
+    @IBAction func inverseBUtton(_ sender: UIButton) {
+        if textField.text != "0"{
+            textField.text = String(-Int(textField.text!)!)
+        }
     }
 }
 
