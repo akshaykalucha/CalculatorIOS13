@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct DetailView: View {
+    let heading: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            NavigationView {
+                NavigationLink(destination: ContentView(), label: {
+                    Text(heading)
+                })
+            }
+        }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(heading: "sjshs")
     }
 }
